@@ -91,7 +91,7 @@ public class JavaShell {
             if(result.equals("-1")) System.out.println("Invalid command!");
             
         } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-            Logger.getLogger(LoaderTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JavaShell.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -109,7 +109,7 @@ public class JavaShell {
             
             for(Method mtd : loadedClass.getMethods()) if(mtd.getName().equals("handleInput")) toreturn = mtd;
         } catch (MalformedURLException | ClassNotFoundException ex) {
-            Logger.getLogger(LoaderTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JavaShell.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return toreturn;
@@ -124,7 +124,7 @@ public class JavaShell {
         } catch (FileNotFoundException ex) {
             return "";
         } catch (IOException ex) {
-            Logger.getLogger(LoaderTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JavaShell.class.getName()).log(Level.SEVERE, null, ex);
         }
         return str;
     }
