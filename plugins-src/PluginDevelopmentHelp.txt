@@ -1,0 +1,9 @@
+If you wish to make a plugin you should remember few things:
+
+1 - Java shell uses a URLClassLoader instance to load plugins. This means that you need to somehow tell the loader which class do you want to load.
+2 - All plugins are loaded from /plugins folde next to the jarfile. Thus you need to place your class info somewhere in that folder.
+3 - The class loader doesn't know what do you need to run, so you need to either be predictable, or provide additional info.
+
+Both of the problems (if they can be called so) are easily solvable. The shell's class loader tries to get a .txt file with the name equal to the jarfile name. Example: you made it so that your main class named "Myclass" lies in "main" package which is in "plugin" package. Your jarfile is named "MyTestPlugin.jar". Then you need to place "MyTestPlugin.txt" next to the jarfile in the /plugins folder and write "plugin.main.Myclass" in "MyTestPlugin.txt".
+
+However, this is not that simple if we talk about running your newly created input handler. If you want it to work, then you need to create a public static String handleInput(String input) method. It will receive the string user entered to the shell and return execution result. If your handler cannot understand the line it received it should return "-1" (as string). If you succesfully handled it, then you are supposed to return "0" (again, as string).
