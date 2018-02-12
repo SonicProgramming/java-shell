@@ -30,7 +30,11 @@ public class JavaShell {
     public static void main(String[] args) {
         for(String arg : args) if(arg.equals("--plugins")) toLoad = true;
         
-        if(toLoad) getPlugins();
+        if(toLoad) {
+            File f = new File(System.getProperty("user.dir")+"/plugins/");
+            if(!f.exists()) f.mkdirs();
+            getPlugins();
+        }
         
         Scanner scan = new Scanner(System.in);
         while(!toExit){
